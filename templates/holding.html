@@ -6,10 +6,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
     <noscript><link rel="stylesheet" href="{{ url_for('static', filename='assets/css/noscript.css') }}" /></noscript>
     <script>
-      function navigate() {
-        window.location.href = "{{ url_for('score') }}";  // redirect when done!
-      }
-      fetch("{{ url_for('wait') }}").then(navigate); // load the slow url then navigate
+      fetch("{{ url_for('game_playing') }}")
+        .then((res) => { return res.json() })
+        .then((data) => {
+          window.location.href = "{{ url_for('score',scoreValue='replaceMe') }}".replace("replaceMe",data.scores)
+        });
     </script>
   </head>
   <body class="is-preload">

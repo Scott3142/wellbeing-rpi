@@ -1,0 +1,4 @@
+flask
+json
+gpiozero
+flask-sqlalchemy
